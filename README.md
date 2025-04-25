@@ -106,3 +106,141 @@ batching
                                 </tr>
                             ))
                         }
+Useeffect():- it is used for life cycle methods in functional based components, it is used to perform side effects(func call, data fetching, timer function, subscriptions, or manually changing the DOM) in fbc 
+
+useEffect(arg1, arg2) -> error
+useEffect(callback, deps) 
+useEffect(()=>{}, deps) 
+useEffect(function(){}, deps)
+function getProducts(){}
+useEffect(getProducts, []) 
+import React, { useEffect, useState } from 'react';
+function FetchPrpoducts(){
+    const [data, setData] = useState([])
+    async function getProducts(){
+        const res = await fetch(url)
+        const data = await res.json()
+        setData(data)
+    }
+    getData()
+}
+
+
+useMemo :- caching -> {a : 2} -> it is used for memoizing values, incase any state value changes then if you want to recompute, need to pass that particular state value in the deps
+input -> iphone
+[{},{},{}]
+
+api calls -> 
+
+`UseCallback :- it is used for memoizing functions, allowing you to avoid unnecessary re-creations of functions on re-renders, which can improve performance in certain scenarios.
+
+here also, it will be used to reuse the same reference whenever the function called
+
+
+1000 -> button
+
+
+const child = React.memo(({handleClick})=>{
+    return (
+        <button onclick = {handleClick}></button>
+    )
+})
+
+export default child
+
+import Child from "./child.jsx"
+Parent - >10 states
+<Child handleClick = {handleClick}/>
+
+
+useReducer :- it is used for managing complex state logic in React components, allowing for more structured state management compared to useState. It follows the reducer pattern, where the state is updated based on actions dispatched to the reducer function.
+
+const []= useState() //data
+const []= useState() //single
+const []= useState() //count
+const []= useState() //loading
+const []= useState() //loading
+const []= useState() //loading
+const []= useState() //loading
+const []= useState() //loading
+
+form -> 
+
+ationType = "withdraw"
+const reducerFunction = (Z, actionType) => {
+      switch(actypeType){
+        case "increment" : 
+        state = state - withdraw
+        return state
+        case "decrement" : 
+        state = state + withdraw
+        return state
+        case "reset" : 
+        state = state + withdraw
+        return state
+    }
+}
+
+useState() -> local, global
+
+usereducer -> local state management
+
+redux
+
+
+usereducer -> actions -> increment, dispatch, -> increment -> reducer, count
+
+
+const [state, dispatch] = useReducer(reducerFunction, initialState);
+const [count, dispatch] = useReducer(reducerFunction, 0);
+
+action -> handleClick -> dispatch({type : "decrement"}) -> reducer -> 
+counter -> 0
+
+
+UseContext Hook : - 
+we can access props directly from its parent compnents without being pass into nested components, 
+
+why ? 
+to prevent prop drilling
+
+props -> passing data from parent to child
+
+parent -> (data) -> child  -> grandChild - {data}
+token -> , themes, 
+App -> {data}
+        parent -> 
+                child - >
+                        grandChild -> 
+                                   Table -> {data}
+
+
+app.jsx -> arr -> child.jsx -> grandChild.jsx ->  button.jsx -> 
+const hello = createContext()
+arr = []
+<hello.Provider value = {arr}>
+<Child />
+</hello.Provider>
+useContext()
+
+Context.jsx -> 
+const myContext = createContext() //{Provider, Consumer}
+
+
+App.jsx ->arr = []
+                    child -> 
+                                Button -> arr
+
+<myContext.Provider value = {arr}>
+<Child />
+</myContext.Provider>
+
+Button.jsx => 
+
+const data = useContext(myContext)
+
+return (
+    {
+        data.map
+    }
+)
